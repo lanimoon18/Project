@@ -23,7 +23,6 @@ public class Account {
         this.accountType = accountType;
     }
 
-
     public long getAccountId() {
         return accountId;
     }
@@ -39,6 +38,7 @@ public class Account {
     public void setAccountBalance(double accountBalance) {
         this.accountBalance = accountBalance;
     }
+
     public void checkBalance() {
         System.out.println("Balance Information");
         System.out.println("Account Number:" + accountId + "    " + "Account Balance:" + accountBalance);
@@ -49,15 +49,26 @@ public class Account {
         System.out.println("Deposit Money");
         Scanner scanmoney = new Scanner(System.in);
         double depositmoney = scanmoney.nextDouble();
-
+        scanmoney.close();
         System.out.println("Deposit Information");
         System.out.println("Original Account Balance:" + accountBalance);
         accountBalance += money;
         System.out.print("Updated Account Balance:" + accountBalance + "\n");
     }
-
-    //public void withdrawal(double takenMoney){
-
-   // }
+    public void withdrawal(double money){
+        System.out.println("How much would you like to withdraw?");
+        Scanner scanwithdraw = new Scanner(System.in);
+        double withdraw = scanwithdraw.nextDouble();
+        scanwithdraw.close();
+        System.out.println("Withdrawal Information");
+        System.out.println("Original Account Balance:" + accountBalance);
+        if (accountBalance >= withdraw) {
+            accountBalance -= money;
+            System.out.print("Updated Account Balance:" + accountBalance + "\n");
+        }
+        else {
+            System.out.println("Insufficient Funds");
+        }
+    }
 }
 
